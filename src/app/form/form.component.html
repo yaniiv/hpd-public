@@ -1,53 +1,157 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="page-container">
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <!-- STEP 1 -->
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Basic Info</ng-template>
         <h1>Basic Info</h1>
-        <p>What is your Name?</p>
-        <mat-form-field>
-          <input matInput placeholder="First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Last name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
+        <div class="input-row">
+          <p>What is your name?</p>
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="firstCtrl" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last name" formControlName="firstCtrl" required>
+          </mat-form-field>
         </div>
+        <div class="input-row">
+          <p>How old are you?</p>
+          <mat-form-field>
+            <input matInput placeholder="Age" formControlName="firstCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row border-row">
+          <p>What is your phone number?</p>
+          <mat-form-field>
+            <input matInput placeholder="(718) 123-1234" formControlName="firstCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row border-row">
+          <p>Building</p>
+          <mat-form-field>
+            <input matInput placeholder="..." formControlName="firstCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row">
+          <p>Apartment number</p>
+          <mat-form-field>
+            <input matInput placeholder="2A" formControlName="firstCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row border-row">
+          <p>What is your social security number?</p>
+          <mat-form-field>
+            <input matInput placeholder="..." formControlName="firstCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
+          <button class="back" mat-stroked-button matStepperPrevioust>Back</button>
+        </div>
+
       </form>
     </mat-step>
+
+    <!-- STEP 2 -->
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Household Info</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field>
+        <h1>Household Info</h1>
+        <div class="input-row">
+          <p>Does anyone live with you?</p>
+          <mat-button-toggle-group #group="matButtonToggleGroup">
+            <mat-button-toggle value="true">
+              Yes
+            </mat-button-toggle>
+            <mat-button-toggle value="false">
+              No
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div class="input-row">
+          <p>What is their name?</p>
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="secondCtrl" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last name" formControlName="secondCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row">
+          <p>How old are they?</p>
+          <mat-form-field>
+            <input matInput placeholder="" formControlName="secondCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row">
+          <p>How are they related to you?</p>
+          <mat-select placeholder="How are they related to you?">
+            <mat-option *ngFor="let relation of familyRelations" [value]="relation">
+              {{relation}}
+            </mat-option>
+          </mat-select>
+        </div>
+
+        <div class="input-row">
+          <button mat-stroked-button>Add another person</button>
+        </div>
+
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
+          <button class="back" mat-stroked-button matStepperPrevioust>Back</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Household Info</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field>
+
+    <!-- STEP 3 -->
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Income & tax</ng-template>
+        <h1>Income & tax</h1>
+        <div class="input-row">
+          <p>What is your yearly income?</p>
+          <mat-form-field>
+            <input matInput placeholder="" formControlName="thirdCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row">
+          <p>What is [person1]'s yearly income?</p>
+          <mat-form-field>
+            <input matInput placeholder="$" formControlName="thirdCtrl" required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-row">
+          <p>What kind of tax return type did they file?</p>
+          <mat-radio-group class="return-type-radio-group" [(ngModel)]="taxReturnTypes" [ngModelOptions]="{standalone: true}"
+          >
+            <mat-radio-button class="return-type-radio-button" *ngFor="let returnType of returnTypes" [value]="season">
+              {{returnType}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
+          <button class="back" mat-stroked-button matStepperPrevioust>Back</button>
         </div>
       </form>
     </mat-step>
+
+
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
       You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
+ss    </mat-step>
   </mat-horizontal-stepper>
 </div>

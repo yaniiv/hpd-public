@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatStepperModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {MatRadioModule, MatSelectModule,MatStepperModule, MatIconModule, MatButtonToggleModule, MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 
 import { FormComponent } from './form.component';
 
@@ -16,7 +16,12 @@ import { FormComponent } from './form.component';
     ReactiveFormsModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatSelectModule,
+    MatRadioModule
   ],
   exports: [
     FormComponent,

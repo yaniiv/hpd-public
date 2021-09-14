@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup,  FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'public-web-form',
@@ -13,6 +13,13 @@ export class FormComponent implements OnInit {
   thirdFormGroup: FormGroup;
 
   title = 'public-web';
+
+  familyRelations = [
+    'sister', 'brother', 'father'
+  ];
+
+  taxReturnTypes: string;
+  returnTypes: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
 
   constructor(private _formBuilder: FormBuilder) {}
 
