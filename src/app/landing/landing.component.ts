@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup,  FormBuilder, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'public-web-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'landing',
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.scss']
 })
-export class FormComponent implements OnInit {
+export class LandingComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;

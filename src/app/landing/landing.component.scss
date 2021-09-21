@@ -1,0 +1,55 @@
+.page-container {
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .page-container {
+    padding: 40px 100px;
+  }
+}
+
+.body-content {
+  //padding-left: 20px;
+}
+
+.intro-block {
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.step {
+  padding-bottom: 20px;
+
+}
+
+.step-intro {
+}
+
+.step-content {
+  padding-left: 40px;
+  margin-left: 12px;
+  border-left: 4px solid #D9E8F6;
+
+  &.last {
+    border-left: none;
+  }
+}
+
+.step-inset {
+  padding-left: 20px;
+}
+
+.step-subtitle {
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.step-title {
+  display: flex;
+  font-weight: bold;
+
+  mat-icon {
+    padding-right: 15px;
+  }
+}
