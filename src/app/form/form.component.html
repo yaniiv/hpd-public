@@ -1,68 +1,68 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="page-container">
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-<!--    &lt;!&ndash; STEP 1 &ndash;&gt;-->
-<!--    <mat-step [stepControl]="basicInfoFormGroup">-->
-<!--      <form [formGroup]="basicInfoFormGroup">-->
-<!--        <ng-template matStepLabel>Basic Info</ng-template>-->
-<!--        <h1>Basic Info</h1>-->
-<!--        <div class="pad-bottom-row">-->
-<!--          <p>What is your name?</p>-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <mat-label>First name</mat-label>-->
-<!--            <input matInput formControlName="firstName" required>-->
-<!--            <mat-hint>e.g., Jane</mat-hint>-->
-<!--          </mat-form-field >-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <mat-label>Last name</mat-label>-->
-<!--            <input matInput formControlName="lastName" required>-->
-<!--            <mat-hint>e.g., Smith</mat-hint>-->
-<!--          </mat-form-field >-->
-<!--          <p>How old are you?</p>-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <input matInput formControlName="age" required>-->
-<!--          </mat-form-field>-->
-<!--        </div>-->
+  <mat-horizontal-stepper [linear]="false" >
+    <!-- STEP 1 -->
+    <mat-step [stepControl]="basicInfoFormGroup">
+      <form [formGroup]="basicInfoFormGroup">
+        <ng-template matStepLabel>Basic Info</ng-template>
+        <h1>Basic Info</h1>
+        <div class="pad-bottom-row">
+          <p>What is your name?</p>
+          <mat-form-field appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" required>
+            <mat-hint>e.g., Jane</mat-hint>
+          </mat-form-field >
+          <mat-form-field appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" required>
+            <mat-hint>e.g., Smith</mat-hint>
+          </mat-form-field >
+          <p>How old are you?</p>
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="age" required>
+          </mat-form-field>
+        </div>
 
-<!--        <mat-divider></mat-divider>-->
+        <mat-divider></mat-divider>
 
-<!--        <div class="pad-bottom-row pad-top-row">-->
-<!--          <p>What is your phone number?</p>-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <input matInput placeholder="(          )"  formControlName="phoneNumber" required>-->
-<!--            <mat-hint>e.g., (718) 123-1234</mat-hint>-->
-<!--          </mat-form-field>-->
-<!--        </div>-->
-<!--        <mat-divider></mat-divider>-->
+        <div class="pad-bottom-row pad-top-row">
+          <p>What is your phone number?</p>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="(          )"  formControlName="phoneNumber" required>
+            <mat-hint>e.g., (718) 123-1234</mat-hint>
+          </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
 
-<!--        <div class="pad-bottom-row pad-top-row">-->
-<!--          <p>Building</p>-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <input matInput formControlName="building" required>-->
-<!--          </mat-form-field >-->
-<!--          <p>Apartment number</p>-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <input matInput formControlName="aptNumber" required>-->
-<!--            <mat-hint>e.g., 2A</mat-hint>-->
-<!--          </mat-form-field>-->
-<!--        </div>-->
+        <div class="pad-bottom-row pad-top-row">
+          <p>Building</p>
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="building" required>
+          </mat-form-field >
+          <p>Apartment number</p>
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="aptNumber" required>
+            <mat-hint>e.g., 2A</mat-hint>
+          </mat-form-field>
+        </div>
 
-<!--        <mat-divider></mat-divider>-->
+        <mat-divider></mat-divider>
 
-<!--        <div class="pad-bottom-row pad-top-row">-->
-<!--          <p>What is your social security number?</p>-->
-<!--          <mat-form-field appearance="outline">-->
-<!--            <input matInput placeholder="_ _ _ - _ _ - _ _ _ _" formControlName="ssn" required>-->
-<!--          </mat-form-field>-->
-<!--        </div>-->
+        <div class="pad-bottom-row pad-top-row">
+          <p>What is your social security number?</p>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="_ _ _ - _ _ - _ _ _ _" formControlName="ssn" required>
+          </mat-form-field>
+        </div>
 
-<!--        <div>-->
-<!--          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>-->
-<!--          <button class="back" mat-stroked-button routerLink="/">Back</button>-->
-<!--        </div>-->
+        <div>
+          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
+          <button class="back" mat-stroked-button routerLink="/">Back</button>
+        </div>
 
-<!--      </form>-->
-<!--    </mat-step>-->
+      </form>
+    </mat-step>
 
     <!-- STEP 2 -->
     <mat-step [stepControl]="householdFormGroup">
@@ -114,8 +114,6 @@
           </div>
         </div>
 
-
-
         <div>
           <button class="forward" mat-stroked-button matStepperNext type="button">Save and continue</button>
           <button class="back" mat-stroked-button matStepperPrevious type="button">Back</button>
@@ -132,32 +130,31 @@
         <div class="pad-bottom-row">
           <p>What is your yearly income?</p>
           <mat-form-field appearance="outline">
-            <mat-label>First name</mat-label>
             <input matInput formControlName="firstName" required>
-            <mat-hint>e.g., Jane</mat-hint>
+            <mat-hint>e.g., $1000.00</mat-hint>
           </mat-form-field >
         </div>
       </form>
 
-      <mat-divider></mat-divider>
-
       <form [formGroup]="householdFormGroup">
         <div  *ngIf="householdFormGroup.value.hasMultipleHouseMembers">
           <div *ngFor="let member of householdMembers.controls; let i = index" >
+            <mat-divider></mat-divider>
             <div [formGroup]="member" class="form-row">
               <div class="pad-bottom-row pad-top-row">
                 <p>What is {{householdFormGroup.value.members[i].firstName}}'s income?</p>
                 <mat-form-field appearance="outline">
                   <input matInput formControlName="income" required>
-                  <mat-hint>e.g., Smith</mat-hint>
+                  <mat-hint>e.g., $1000.00</mat-hint>
                 </mat-form-field >
                 <p>What kind of tax return type did they file?</p>
-                <mat-form-field appearance="outline">
-                  <mat-select  formControlName="taxReturnType">
+                <mat-form-field  appearance="outline">
+                  <mat-select formControlName="taxReturnType">
                     <mat-option *ngFor="let returnType of taxReturnTypes" [value]="returnType">
                       {{ returnType }}
                     </mat-option>
                   </mat-select>
+                  <mat-hint>e.g., Individual Return</mat-hint>
                 </mat-form-field >
               </div>
             </div>

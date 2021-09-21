@@ -48,19 +48,22 @@ export class FormComponent implements OnInit {
           taxReturnType: ['' , Validators.required]
         })
       ]),
-
     });
+
     this.incomeTaxGroup = this._formBuilder.group({
       incomeAndTax: ['', Validators.required]
     });
 
     this.basicInfoFormGroup.valueChanges.subscribe(val => {
-      console.warn("val", val);
+      console.warn("basicInfoFormGroup val", val);
+    });
+
+    this.householdFormGroup.valueChanges.subscribe(val => {
+      console.warn("householdFormGroup val", val);
     });
   }
 
   onToggleMultipleMembers(changes) {
-    console.warn("changes", changes)
     if(changes.value === true) {
       this.householdFormGroup.patchValue({
         hasMultipleHouseMembers: true,
