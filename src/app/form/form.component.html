@@ -89,9 +89,19 @@
             </mat-select>
           </mat-form-field>
 
-          <div *ngFor="let member of householdFormGroup.controls.members.controls;" >
-            <div [formGroup]="member">
-              <div class="pad-bottom-row">
+<!--          <div *ngFor="let member of householdFormGroup.controls.members.controls;" >-->
+<!--            {{member | json}}-->
+<!--            <div [formGroup]="member">-->
+<!--
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <div *ngFor="let member of householdMembers.controls; let i = index" class="list-group list-group-flush">
+          <div class="list-group-item">
+            <h5 class="card-title">Ticket {{i + 1}}</h5>
+            <div [formGroup]="member" class="form-row">
+              <div class="pad-bottom-row">-->
                 <p>What is your name?</p>
                 <mat-form-field appearance="outline">
                   <mat-label>First name</mat-label>
@@ -114,6 +124,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
 <!--        <div class="pad-bottom-row pad-top-row">-->
 <!--          <p>What is their name?</p>-->

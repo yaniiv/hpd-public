@@ -12,7 +12,9 @@ export class FormComponent implements OnInit {
   householdFormGroup: FormGroup;
   incomeTaxGroup: FormGroup;
 
-  once = false
+  // get householdControls() { return this.householdFormGroup.controls; }
+  get householdMembers() { return this.householdFormGroup.controls.members as FormArray; }
+
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
