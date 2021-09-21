@@ -2,132 +2,179 @@
 <div class="page-container">
   <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <!-- STEP 1 -->
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+    <mat-step [stepControl]="basicInfoFormGroup">
+      <form [formGroup]="basicInfoFormGroup">
         <ng-template matStepLabel>Basic Info</ng-template>
         <h1>Basic Info</h1>
-        <div class="input-row">
+        <div class="pad-bottom-row">
           <p>What is your name?</p>
-          <mat-form-field>
-            <input matInput placeholder="First name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Last name" formControlName="firstCtrl" required>
-          </mat-form-field>
-        </div>
-        <div class="input-row">
+          <mat-form-field appearance="outline">
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" required>
+            <mat-hint>e.g., Jane</mat-hint>
+          </mat-form-field >
+          <mat-form-field appearance="outline">
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" required>
+            <mat-hint>e.g., Smith</mat-hint>
+          </mat-form-field >
           <p>How old are you?</p>
-          <mat-form-field>
-            <input matInput placeholder="Age" formControlName="firstCtrl" required>
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="age" required>
           </mat-form-field>
         </div>
 
-        <div class="input-row border-row">
+        <mat-divider></mat-divider>
+
+        <div class="pad-bottom-row pad-top-row">
           <p>What is your phone number?</p>
-          <mat-form-field>
-            <input matInput placeholder="(718) 123-1234" formControlName="firstCtrl" required>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="(          )"  formControlName="phoneNumber" required>
+            <mat-hint>e.g., (718) 123-1234</mat-hint>
           </mat-form-field>
         </div>
+        <mat-divider></mat-divider>
 
-        <div class="input-row border-row">
+        <div class="pad-bottom-row pad-top-row">
           <p>Building</p>
-          <mat-form-field>
-            <input matInput placeholder="..." formControlName="firstCtrl" required>
-          </mat-form-field>
-        </div>
-
-        <div class="input-row">
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="building" required>
+          </mat-form-field >
           <p>Apartment number</p>
-          <mat-form-field>
-            <input matInput placeholder="2A" formControlName="firstCtrl" required>
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="aptNumber" required>
+            <mat-hint>e.g., 2A</mat-hint>
           </mat-form-field>
         </div>
 
-        <div class="input-row border-row">
+        <mat-divider></mat-divider>
+
+        <div class="pad-bottom-row pad-top-row">
           <p>What is your social security number?</p>
-          <mat-form-field>
-            <input matInput placeholder="..." formControlName="firstCtrl" required>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="_ _ _ - _ _ - _ _ _ _" formControlName="ssn" required>
           </mat-form-field>
         </div>
 
         <div>
           <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
-          <button class="back" mat-stroked-button matStepperPrevioust>Back</button>
+          <button class="back" mat-stroked-button routerLink="/">Back</button>
         </div>
 
       </form>
     </mat-step>
 
     <!-- STEP 2 -->
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="householdFormGroup">
+      <form [formGroup]="householdFormGroup">
         <ng-template matStepLabel>Household Info</ng-template>
-        <h1>Household Info</h1>
-        <div class="input-row">
+        <h1>Household info</h1>
+        <div class="pad-bottom-row">
           <p>Does anyone live with you?</p>
-          <mat-button-toggle-group #group="matButtonToggleGroup">
-            <mat-button-toggle value="true">
+          <mat-button-toggle-group formControlName="hasMultipleHouseMembers" (change)="onToggleMultipleMembers($event)">
+            <mat-button-toggle [value]="true">
               Yes
             </mat-button-toggle>
-            <mat-button-toggle value="false">
+            <mat-button-toggle [value]="false">
               No
             </mat-button-toggle>
           </mat-button-toggle-group>
         </div>
 
-        <div class="input-row">
-          <p>What is their name?</p>
+        <div  *ngIf="householdFormGroup.value.hasMultipleHouseMembers">
           <mat-form-field>
-            <input matInput placeholder="First name" formControlName="secondCtrl" required>
+            <p>How Many Others?</p>
+            <mat-select  formControlName="numHouseMembers" (selectionChange)="onSelectNumMembers($event)">
+              <mat-option appearance="outline" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}</mat-option>
+            </mat-select>
           </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Last name" formControlName="secondCtrl" required>
-          </mat-form-field>
-        </div>
 
-        <div class="input-row">
-          <p>How old are they?</p>
-          <mat-form-field>
-            <input matInput placeholder="" formControlName="secondCtrl" required>
-          </mat-form-field>
+          <div *ngFor="let member of householdFormGroup.controls.members.controls;" >
+            <div [formGroup]="member">
+              <div class="pad-bottom-row">
+                <p>What is your name?</p>
+                <mat-form-field appearance="outline">
+                  <mat-label>First name</mat-label>
+                  <input matInput formControlName="firstName" required>
+                  <mat-hint>e.g., Jane</mat-hint>
+                </mat-form-field >
+                <mat-form-field appearance="outline">
+                  <mat-label>Last name</mat-label>
+                  <input matInput formControlName="lastName" required>
+                  <mat-hint>e.g., Smith</mat-hint>
+                </mat-form-field >
+                <p>How old are they?</p>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="age" required>
+                </mat-form-field>
+                <p>How are they related to you?</p>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="relation" required>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
         </div>
+<!--        <div class="pad-bottom-row pad-top-row">-->
+<!--          <p>What is their name?</p>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <input matInput placeholder="First name" formControlName="houseHoldInfo" required>-->
+<!--          </mat-form-field >-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <input matInput placeholder="Last name" formControlName="houseHoldInfo" required>-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
 
-        <div class="input-row">
+<!--        <div class="pad-bottom-row">-->
+<!--          <p>How old are they?</p>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <input matInput placeholder="" formControlName="houseHoldInfo" required>-->
+<!--          </mat-form-field >-->
+<!--        </div>-->
+
+        <div class="pad-bottom-row pad-top-row">
           <p>How are they related to you?</p>
           <mat-select placeholder="How are they related to you?">
-            <mat-option *ngFor="let relation of familyRelations" [value]="relation">
-              {{relation}}
+            <mat-option *ngFor="let houseMember of householdFormGroup.value.members" >
+             hi
             </mat-option>
           </mat-select>
         </div>
+
+        <div *ngFor="let houseMember of householdFormGroup.value.members">
+            helloooooo
+        </div>
+
+
+
 
         <div class="input-row">
           <button mat-stroked-button>Add another person</button>
         </div>
 
         <div>
-          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
-          <button class="back" mat-stroked-button matStepperPrevioust>Back</button>
+          <button class="forward" mat-stroked-button matStepperNext type="button">Save and continue</button>
+          <button class="back" mat-stroked-button matStepperPrevious type="button">Back</button>
         </div>
       </form>
     </mat-step>
 
     <!-- STEP 3 -->
-    <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
+    <mat-step [stepControl]="incomeTaxGroup">
+      <form [formGroup]="incomeTaxGroup">
         <ng-template matStepLabel>Income & tax</ng-template>
         <h1>Income & tax</h1>
         <div class="input-row">
           <p>What is your yearly income?</p>
-          <mat-form-field>
-            <input matInput placeholder="" formControlName="thirdCtrl" required>
-          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="" formControlName="incomeAndTax" required>
+          </mat-form-field >
         </div>
 
         <div class="input-row">
           <p>What is [person1]'s yearly income?</p>
-          <mat-form-field>
-            <input matInput placeholder="$" formControlName="thirdCtrl" required>
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="$" formControlName="incomeAndTax" required>
           </mat-form-field>
         </div>
 
@@ -142,8 +189,8 @@
         </div>
 
         <div>
-          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
-          <button class="back" mat-stroked-button matStepperPrevioust>Back</button>
+          <button class="forward" mat-stroked-button matStepperNext >Save and continue</button>
+          <button class="back" mat-stroked-button matStepperPrevious>Back</button>
         </div>
       </form>
     </mat-step>

@@ -2,11 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
-  MatButtonToggleModule,
+  MatButtonToggleModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatRadioModule, MatSelectModule,
-  MatStepper,
+  MatInputModule, MatOptionModule, MatRadioModule, MatSelectModule,
   MatStepperModule
 } from '@angular/material';
 import { RouterModule} from '@angular/router';
@@ -40,7 +39,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatIconModule,
     MatSelectModule,
     MatRadioModule,
-    AppRoutingModule
+    MatDividerModule,
+    AppRoutingModule,
+    MatOptionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
