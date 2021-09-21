@@ -1,6 +1,7 @@
 import {Component,  OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormArray, AbstractControl} from '@angular/forms';
 import {SimpleChanges} from '@angular/core';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'public-web-form',
@@ -11,6 +12,12 @@ export class FormComponent implements OnInit {
   basicInfoFormGroup: FormGroup;
   householdFormGroup: FormGroup;
   incomeTaxGroup: FormGroup;
+
+  taxReturnTypes = [
+    "Joint return",
+    "Individual return",
+    "No return filed"
+  ]
 
   // get householdControls() { return this.householdFormGroup.controls; }
   get householdMembers() { return this.householdFormGroup.controls.members as FormArray; }
@@ -33,10 +40,12 @@ export class FormComponent implements OnInit {
       numHouseMembers:  [0, Validators.required],
       members: new FormArray([
         this._formBuilder.group({
-          firstName: ['dwdawd', Validators.required],
-          lastName: ['dwadaw', Validators.required],
+          firstName: ['', Validators.required],
+          lastName: ['', Validators.required],
           age: ['', Validators.required],
           relation: ['', Validators.required],
+          income: ['' , Validators.required],
+          taxReturnType: ['' , Validators.required]
         })
       ]),
 
@@ -65,7 +74,7 @@ export class FormComponent implements OnInit {
   }
 
   onAddMember() {
-    this.householdFormGroup.controls.members.push(this._formBuilder.group({
+    this.householdMembers.push(this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       age: ['', Validators.required],
