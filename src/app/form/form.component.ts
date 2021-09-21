@@ -48,8 +48,6 @@ export class FormComponent implements OnInit {
     this.basicInfoFormGroup.valueChanges.subscribe(val => {
       console.warn("val", val);
     });
-
-    this.householdFormGroup.valueChanges.subscribe((changes) => this.handleHouseholdFormChanges(changes, this.householdFormGroup));
   }
 
   onToggleMultipleMembers(changes) {
@@ -61,70 +59,17 @@ export class FormComponent implements OnInit {
     } else {
       this.householdFormGroup.patchValue({
         hasMultipleHouseMembers: false,
+        members: [],
       });
     }
   }
 
-  onSelectNumMembers(changes) {
-    console.warn("onSelectNumMembers", changes)
-    const newFormFields: AbstractControl[] = [];
-    for (let i = 0; i<changes.value; i++) {
-      newFormFields.push(
-        this._formBuilder.group({
-          firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
-          age: ['', Validators.required],
-          relation: ['', Validators.required],
-        })
-      );
-
-      this.householdFormGroup.controls.members = newFormFields;
-    }
+  onAddMember() {
+    this.householdFormGroup.controls.members.push(this._formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      age: ['', Validators.required],
+      relation: ['', Validators.required],
+    }));
   }
-
-  handleHouseholdFormChanges(changes, householdFormGroup) {
-    console.warn("changes", changes);
-    console.warn("householdFormGroup", householdFormGroup);
-    const members = householdFormGroup.value.members;
-    const numHouseMembers = householdFormGroup.value.numHouseMembers;
-    console.warn("numHouseMembers", numHouseMembers);
-    console.warn("members", members);
-    // const numHouseMembers = changes.numHouseMembers;
-
-    // console.warn("householdFormGroup.value.numHouseMembers", householdFormGroup.value.numHouseMembers)
-    // console.warn("once", once)
-
-      if (numHouseMembers === 0) {
-        householdFormGroup.patchValue({
-          numHouseMembers: 1,
-          // hasMultipleHouseMembers: true,
-          // members: [{a: "b"}]
-        });
-        // householdFormGroup.getValue('members').insert('1',
-        //   this._formBuilder.group({
-        //       name: ['', Validators.required],
-        //       email: ['', [Validators.required, Validators.email]],
-        //       hasMultipleHouseMembers: ['', [Validators.required, Validators.email]],
-        //     }))
-        console.warn('hi');
-        // householdFormGroup.value.numHouseMembers += 1;
-        //
-        // console.warn("householdFormGroup", householdFormGroup)
-        // // householdFormGroup.setValue("numHouseMembers", 1);
-        // console.warn("householdFormGroup", householdFormGroup);
-        //
-        householdFormGroup.controls.members.push(this._formBuilder.group({
-          name: ['from', Validators.required],
-          email: ['', [Validators.required, Validators.email]],
-          hasMultipleHouseMembers: ['', [Validators.required, Validators.email]],
-        }));
-
-        // console.warn("this.householdFormGroup", this.householdFormGroup)
-        // this.householdFormGroup.value.members.push([
-        //
-        // ])
-      }
-
-  }
-
 }

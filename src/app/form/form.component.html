@@ -82,49 +82,34 @@
         </div>
 
         <div  *ngIf="householdFormGroup.value.hasMultipleHouseMembers">
-          <mat-form-field>
-            <p>How Many Others?</p>
-            <mat-select  formControlName="numHouseMembers" (selectionChange)="onSelectNumMembers($event)">
-              <mat-option appearance="outline" *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-<!--          <div *ngFor="let member of householdFormGroup.controls.members.controls;" >-->
-<!--            {{member | json}}-->
-<!--            <div [formGroup]="member">-->
-<!--
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-
-        <div *ngFor="let member of householdMembers.controls; let i = index" class="list-group list-group-flush">
-          <div class="list-group-item">
-            <h5 class="card-title">Ticket {{i + 1}}</h5>
-            <div [formGroup]="member" class="form-row">
-              <div class="pad-bottom-row">-->
-                <p>What is your name?</p>
-                <mat-form-field appearance="outline">
-                  <mat-label>First name</mat-label>
-                  <input matInput formControlName="firstName" required>
-                  <mat-hint>e.g., Jane</mat-hint>
-                </mat-form-field >
-                <mat-form-field appearance="outline">
-                  <mat-label>Last name</mat-label>
-                  <input matInput formControlName="lastName" required>
-                  <mat-hint>e.g., Smith</mat-hint>
-                </mat-form-field >
-                <p>How old are they?</p>
-                <mat-form-field appearance="outline">
-                  <input matInput formControlName="age" required>
-                </mat-form-field>
-                <p>How are they related to you?</p>
-                <mat-form-field appearance="outline">
-                  <input matInput formControlName="relation" required>
-                </mat-form-field>
+          <div *ngFor="let member of householdMembers.controls; let i = index" class="list-group list-group-flush">
+            <div>
+              <h5 class="card-title">Member {{i + 1}}</h5>
+              <div [formGroup]="member" class="form-row">
+                <div class="pad-bottom-row">-->
+                  <p>What is your name?</p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="firstName" required>
+                    <mat-hint>e.g., Jane</mat-hint>
+                  </mat-form-field >
+                  <mat-form-field appearance="outline">
+                    <mat-label>Last name</mat-label>
+                    <input matInput formControlName="lastName" required>
+                    <mat-hint>e.g., Smith</mat-hint>
+                  </mat-form-field >
+                  <p>How old are they?</p>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="age" required>
+                  </mat-form-field>
+                  <p>How are they related to you?</p>
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="relation" required>
+                  </mat-form-field>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
 <!--        <div class="pad-bottom-row pad-top-row">-->
 <!--          <p>What is their name?</p>-->
@@ -156,11 +141,8 @@
             helloooooo
         </div>
 
-
-
-
         <div class="input-row">
-          <button mat-stroked-button>Add another person</button>
+          <button mat-stroked-button (click)="onAddMember()">Add another person</button>
         </div>
 
         <div>
