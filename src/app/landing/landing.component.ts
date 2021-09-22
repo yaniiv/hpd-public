@@ -9,7 +9,8 @@ const NYC_AUTH_HANDOFF_URL = 'https://www1.nyc.gov/';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent {
-  constructor() {}
+  constructor() {
+  }
 
   public routeToSignIn() {
     window.location.href = NYC_AUTH_HANDOFF_URL;
