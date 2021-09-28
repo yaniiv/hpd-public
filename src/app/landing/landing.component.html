@@ -1,58 +1,54 @@
 <div class="page-container">
   <h1 class="mitch">Mitchell-Lama income affidavit</h1>
-  <p>Brief description about the form</p>
-  <p class="intro-block">The deadline for residents to file is now extended to May 17, 2021. Managing agents will calculate surcharges based on the 2020 Income Affidavits that will take effect August 1, 2021. Current surcharges remain in effect until July 31, 2021. As a reminder, Income Affidavits do not have to be notarized this year</p>
+
+  <div class="banner">
+    <div class="banner-title">
+      <mat-icon>info</mat-icon>
+      The deadline for residents to file is now extended to May 17, 2021
+    </div>
+    <div class="banner-content">
+      <div>The deadline for residents to file is now extended to May 17, 2021
+        Managing agents will calculate surcharges based on the 2020 Income Affidavits that will take effect August 1, 2021. Current surcharges remain in effect until July 31, 2021. As a reminder, Income Affidavits do not have to be notarized this year.</div>
+    </div>
+  </div>
+
   <h2>How it works</h2>
   <div class="body-content">
     <div class="step">
       <div class="step-title"><mat-icon>filter_1</mat-icon> Gather your documents</div>
       <div class="step-content">
           <div class="step-intro">You will need the following information to fill out this form:</div>
-              <div class="step-inset">
-                <div class="step-subtitle">Household information</div>
-                <div>The names of everyone in your apartment and their:</div>
-                <ul>
-                  <li>Social security number</li>
-                  <li>Yearly income (if 18 or older)</li>
-                  <li>Tax file return type (if 18 or older)</li>
-                </ul>
-              </div>
 
+          <div class="step-subtitle"><mat-icon>home</mat-icon>Household information</div>
             <div class="step-inset">
-              <div class="step-subtitle">NY State tax form IT-201</div>
-              <div>Some details about the NY State tax form IT-201. </div>
+              <div>The names of everyone in your apartment and their:</div>
+              <ul>
+                <li>Social security number</li>
+                <li>Yearly income (if 18 or older)</li>
+                <li>Tax file return type (if 18 or older)</li>
+              </ul>
             </div>
+
+        <div >
+          <div class="step-subtitle">
+            <mat-icon>work</mat-icon>
+            NY State tax form IT-201</div>
+        </div>
       </div>
     </div>
     <div class="step">
       <div class="step-title"><mat-icon>filter_2</mat-icon>Start the income affidavit</div>
       <div class="step-content">
-        <div class="step-intro">Brief description</div>
+        <div class="step-intro">You can estimate your progress along the way.</div>
+        <div class="step-intro">Estimated time to complete: 10-15 minutes.</div>
       </div>
     </div>
     <div class="step">
-      <div class="step-title"><mat-icon>filter_3</mat-icon>Submit to your managing agent</div>
-      <div class="step-content last">
-        <div class="step-intro">Brief description</div>
-      </div>
+      <div class="step-title"><mat-icon>filter_3</mat-icon>Submit to your building management by the deadline</div>
     </div>
 
-    <div class="banner">
-      <div class="banner-title">
-        <mat-icon>info</mat-icon>
-        Save time and save your work in progress
-      </div>
-      <div class="banner-content">
-        Here's how signing in helps you:
-        <ul>
-          <li>Here’s how signing in now helps you: We can fill in some of your information from last year (if you filled out an income affidavit) for you to save you time.</li>
-          <li>You can save your work in progress. You have [x] days to complete the form. Start now, finish later.</li>
-        </ul>
-        <div class="banner-ctas">
-          <button mat-raised-button (click)="routeToSignIn()">Sign in to start your form</button>
-          <a routerLink="affidavit">Start without signing in</a>
-        </div>
-      </div>
+    <div class="cta">
+      <button mat-raised-button (click)="routeToSignIn()">Sign in</button>
     </div>
   </div>
 </div>

@@ -1,7 +1,5 @@
-import {Component,  OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormArray, AbstractControl} from '@angular/forms';
-import {SimpleChanges} from '@angular/core';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import {Component,  OnInit, ViewChild} from '@angular/core';
+import {FormGroup, FormBuilder, Validators, FormArray} from '@angular/forms';
 
 @Component({
   selector: 'public-web-form',
@@ -9,9 +7,14 @@ import {validate} from 'codelyzer/walkerFactory/walkerFn';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  basicInfoFormGroup: FormGroup;
-  householdFormGroup: FormGroup;
-  incomeTaxGroup: FormGroup;
+  personalInfoFormGroup: FormGroup;
+  houseMemberInfoFormGroup: FormGroup;
+  houseIncomeInfoFormGroup: FormGroup;
+
+  @ViewChild('signaturePad')
+  signaturePad;
+  sigWidth = 600;
+  sigHeight = 100;
 
   taxReturnTypes = [
     "Joint return",
@@ -19,13 +22,13 @@ export class FormComponent implements OnInit {
     "No return filed"
   ]
 
-  // get householdControls() { return this.householdFormGroup.controls; }
-  get householdMembers() { return this.householdFormGroup.controls.members as FormArray; }
+  // get householdControls() { return this.houseMemberInfoFormGroup.controls; }
+  get householdMembers() { return this.houseMemberInfoFormGroup.controls.members as FormArray; }
 
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.basicInfoFormGroup = this._formBuilder.group({
+    this.personalInfoFormGroup = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       age: ['', Validators.required],
@@ -35,7 +38,7 @@ export class FormComponent implements OnInit {
       ssn: ['', Validators.required]
     });
 
-    this.householdFormGroup = this._formBuilder.group({
+    this.houseMemberInfoFormGroup = this._formBuilder.group({
       hasMultipleHouseMembers:  [false, Validators.required],
       numHouseMembers:  [0, Validators.required],
       members: new FormArray([
@@ -50,26 +53,38 @@ export class FormComponent implements OnInit {
       ]),
     });
 
-    this.incomeTaxGroup = this._formBuilder.group({
-      incomeAndTax: ['', Validators.required]
+    this.houseIncomeInfoFormGroup = this._formBuilder.group({
+        grandTotalIncome: ['', Validators.required],
+        dependentExemption: ['', Validators.required],
+        taxpayerDeduction: ['', Validators.required],
+        medicalDentalExpenses: ['', Validators.required],
+        socialSecurityBenefits: ['' , Validators.required],
+        total: ['' , Validators.required],
+        adjustedHouseholdIncome: ['' , Validators.required]
     });
 
-    this.basicInfoFormGroup.valueChanges.subscribe(val => {
-      console.warn("basicInfoFormGroup val", val);
+
+
+    this.personalInfoFormGroup.valueChanges.subscribe(val => {
+      console.warn("personalInfoFormGroup val", val);
     });
 
-    this.householdFormGroup.valueChanges.subscribe(val => {
-      console.warn("householdFormGroup val", val);
+    this.houseMemberInfoFormGroup.valueChanges.subscribe(val => {
+      console.warn("houseMemberInfoFormGroup val", val);
+    });
+
+    this.houseIncomeInfoFormGroup.valueChanges.subscribe(val => {
+      console.warn("houseIncomeInfoFormGroup val", val);
     });
   }
 
   onToggleMultipleMembers(changes) {
-    if(changes.value === true) {
-      this.householdFormGroup.patchValue({
+    if (changes.value === true) {
+      this.houseMemberInfoFormGroup.patchValue({
         hasMultipleHouseMembers: true,
       });
     } else {
-      this.householdFormGroup.patchValue({
+      this.houseMemberInfoFormGroup.patchValue({
         hasMultipleHouseMembers: false,
         members: [],
       });

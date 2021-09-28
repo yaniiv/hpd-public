@@ -9,6 +9,11 @@
   padding-bottom: 20px;
 }
 
+.pad-bottom-row-two{
+  padding-bottom: 40px;
+}
+
+
 .pad-top-row {
   padding-top: 20px;
 }
@@ -37,10 +42,10 @@ h1 {
 .forward {
   background-color: #005EA2;
   color: white;
+  margin-left: 12px;
 }
 
 .back {
-  margin-left: 12px;
   background-color: #FA9441;
   color: white
 }
@@ -66,4 +71,13 @@ h1 {
 
 mat-form-field{
   padding: 0 20px 0 0;
+}
+
+.legal {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.sig-pad {
+  border:1px solid black;
 }

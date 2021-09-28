@@ -1,53 +1,57 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="page-container">
   <mat-horizontal-stepper [linear]="false" >
-    <!-- STEP 1 -->
-    <mat-step [stepControl]="basicInfoFormGroup">
-      <form [formGroup]="basicInfoFormGroup">
+    <mat-step [stepControl]="personalInfoFormGroup">
+      <form [formGroup]="personalInfoFormGroup">
         <ng-template matStepLabel>Basic Info</ng-template>
         <h1>Basic Info</h1>
         <div class="pad-bottom-row">
-          <p>What is your name?</p>
+          <p>What is your name (head of household)?</p>
           <mat-form-field appearance="outline">
             <mat-label>First name</mat-label>
             <input matInput formControlName="firstName" required>
             <mat-hint>e.g., Jane</mat-hint>
-          </mat-form-field >
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row">
           <mat-form-field appearance="outline">
             <mat-label>Last name</mat-label>
             <input matInput formControlName="lastName" required>
             <mat-hint>e.g., Smith</mat-hint>
-          </mat-form-field >
-          <p>How old are you?</p>
-          <mat-form-field appearance="outline">
-            <input matInput formControlName="age" required>
           </mat-form-field>
         </div>
 
-        <mat-divider></mat-divider>
+        <p>What is your date of birth?</p>
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-hint>e.g., 4/28/1986</mat-hint>
+        </mat-form-field>
 
-        <div class="pad-bottom-row pad-top-row">
+
+        <div class="pad-bottom-row">
           <p>What is your phone number?</p>
           <mat-form-field appearance="outline">
             <input matInput placeholder="(          )"  formControlName="phoneNumber" required>
             <mat-hint>e.g., (718) 123-1234</mat-hint>
           </mat-form-field>
         </div>
-        <mat-divider></mat-divider>
 
-        <div class="pad-bottom-row pad-top-row">
-          <p>Building</p>
+        <div>
+          <p>Where do you live?</p>
           <mat-form-field appearance="outline">
+            <mat-label>Building</mat-label>
             <input matInput formControlName="building" required>
           </mat-form-field >
-          <p>Apartment number</p>
+        </div>
+        <div>
           <mat-form-field appearance="outline">
+            <mat-label>Apartment number</mat-label>
             <input matInput formControlName="aptNumber" required>
             <mat-hint>e.g., 2A</mat-hint>
           </mat-form-field>
         </div>
-
-        <mat-divider></mat-divider>
 
         <div class="pad-bottom-row pad-top-row">
           <p>What is your social security number?</p>
@@ -57,16 +61,15 @@
         </div>
 
         <div>
-          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
           <button class="back" mat-stroked-button routerLink="/">Back</button>
+          <button class="forward" mat-stroked-button matStepperNext>Save and continue</button>
         </div>
 
       </form>
     </mat-step>
 
-    <!-- STEP 2 -->
-    <mat-step [stepControl]="householdFormGroup">
-      <form [formGroup]="householdFormGroup">
+    <mat-step [stepControl]="houseMemberInfoFormGroup">
+      <form [formGroup]="houseMemberInfoFormGroup">
         <ng-template matStepLabel>Household Info</ng-template>
         <h1>Household info</h1>
         <div class="pad-bottom-row">
@@ -81,25 +84,30 @@
           </mat-button-toggle-group>
         </div>
 
-        <div  *ngIf="householdFormGroup.value.hasMultipleHouseMembers">
+        <div  *ngIf="houseMemberInfoFormGroup.value.hasMultipleHouseMembers">
           <div *ngFor="let member of householdMembers.controls; let i = index" >
               <div [formGroup]="member" class="form-row">
-                <mat-divider></mat-divider>
                 <div class="pad-bottom-row pad-top-row">
-                  <p>What is thier name?</p>
+                  <div class="pad-bottom-row">
+                    <p>What is their name?</p>
+                    <mat-form-field appearance="outline">
+                      <mat-label>First name</mat-label>
+                      <input matInput formControlName="firstName" required>
+                      <mat-hint>e.g., Jane</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <div class="pad-bottom-row">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Last name</mat-label>
+                      <input matInput formControlName="lastName" required>
+                      <mat-hint>e.g., Smith</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <p>What is their date of birth?</p>
                   <mat-form-field appearance="outline">
-                    <mat-label>First name</mat-label>
-                    <input matInput formControlName="firstName" required>
-                    <mat-hint>e.g., Jane</mat-hint>
-                  </mat-form-field >
-                  <mat-form-field appearance="outline">
-                    <mat-label>Last name</mat-label>
-                    <input matInput formControlName="lastName" required>
-                    <mat-hint>e.g., Smith</mat-hint>
-                  </mat-form-field >
-                  <p>How old are they?</p>
-                  <mat-form-field appearance="outline">
-                    <input matInput formControlName="age" required>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                   <p>How are they related to you?</p>
                   <mat-form-field appearance="outline">
@@ -115,37 +123,35 @@
         </div>
 
         <div>
-          <button class="forward" mat-stroked-button matStepperNext type="button">Save and continue</button>
           <button class="back" mat-stroked-button matStepperPrevious type="button">Back</button>
+          <button class="forward" mat-stroked-button matStepperNext type="button">Save and continue</button>
         </div>
       </form>
     </mat-step>
 
-    <!-- STEP 3 -->
-    <mat-step [stepControl]="incomeTaxGroup">
+    <mat-step [stepControl]="houseIncomeInfoFormGroup">
       <ng-template matStepLabel>Income & tax</ng-template>
       <h1>Income & tax</h1>
 
-      <form [formGroup]="basicInfoFormGroup">
-        <div class="pad-bottom-row">
+      <form [formGroup]="personalInfoFormGroup">
+        <div>
           <p>What is your yearly income?</p>
           <mat-form-field appearance="outline">
             <input matInput formControlName="firstName" required>
-            <mat-hint>e.g., $1000.00</mat-hint>
           </mat-form-field >
         </div>
       </form>
 
-      <form [formGroup]="householdFormGroup">
-        <div  *ngIf="householdFormGroup.value.hasMultipleHouseMembers">
+      <form [formGroup]="houseMemberInfoFormGroup">
+        <div  *ngIf="houseMemberInfoFormGroup.value.hasMultipleHouseMembers">
           <div *ngFor="let member of householdMembers.controls; let i = index" >
             <mat-divider></mat-divider>
+            <h3>Other household members</h3>
             <div [formGroup]="member" class="form-row">
-              <div class="pad-bottom-row pad-top-row">
-                <p>What is {{householdFormGroup.value.members[i].firstName}}'s income?</p>
+              <div class="pad-bottom-row">
+                <p>What is {{houseMemberInfoFormGroup.value.members[i].firstName}}'s income?</p>
                 <mat-form-field appearance="outline">
                   <input matInput formControlName="income" required>
-                  <mat-hint>e.g., $1000.00</mat-hint>
                 </mat-form-field >
                 <p>What kind of tax return type did they file?</p>
                 <mat-form-field  appearance="outline">
@@ -160,17 +166,113 @@
             </div>
           </div>
         </div>
-        <div>
-          <button class="forward" mat-stroked-button matStepperNext type="button">Save and continue</button>
-          <button class="back" mat-stroked-button matStepperPrevious type="button">Back</button>
+      </form>
+
+      <mat-divider></mat-divider>
+
+      <form [formGroup]="houseIncomeInfoFormGroup">
+        <div class="pad-bottom-row">
+          <p>1. What is the grand total income of everyone in your household?</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="grandTotalIncome" required>
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row">
+          <p>2a. "Dependent Exemptions"</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="dependentExemption" required>
+            <mat-hint>As reported on Line 36 of IT-201</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row-two">
+          <p>2b. Taxpayer Deduction</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="taxpayerDeduction" required>
+            <mat-hint>No. of persons who filed a 2018 NYS tax return and were not claimed as a dependent by another taxpayer X1000
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row-two">
+          <p>3. "Medical & Dental Expenses"</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="taxpayerDeduction" required>
+            <mat-hint>As reported on Line 1 of the IT-196 filed with your 2018 NYS tax return
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row">
+          <p>4. “Taxable Social Security Benefits”</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="socialSecurityBenefits" required>
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row">
+          <p>5. Total</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="total" required>
+            <mat-hint>Add 2a, 2b, 3 & 4
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="pad-bottom-row">
+          <p>6. Adjusted household income</p>
+          <mat-form-field appearance="outline">
+            <mat-label>$</mat-label>
+            <input matInput formControlName="adjustedHouseholdIncome" required>
+            <mat-hint>Subtract line 5 from 1</mat-hint>
+          </mat-form-field>
         </div>
       </form>
+
+
+      <div>
+        <button class="back" mat-stroked-button matStepperPrevious type="button">Back</button>
+        <button class="forward" mat-stroked-button matStepperNext type="button">Save and continue</button>
+      </div>
     </mat-step>
 
 
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-ss    </mat-step>
+      <ng-template matStepLabel>Submit</ng-template>
+      <h1>Submit</h1>
+      <p>Almost done! Review the information below, sign, and submit.</p>
+      <div class="legal">
+        <div>
+          STATE OF NEW YORK )
+        </div>
+        <div>
+          COUNTY OF ____________ ) SS: THE UNDERSIGNED, BEING DULY SWORN, DEPOSES AND SAYS:
+        </div>
+        <div class="pad-top-row">
+          (1) That (s)he hereby certifies that (s)he has read said affidavit of income and household composition and knows the content thereof; that the said affidavit is true to the personal knowledge of deponents.
+        </div>
+
+        <div class="pad-top-row">
+          (2) That s(he) understands that:
+          <div class="pad-top-row">- Willful misrepresentation may be cause for termination of the lease/occupancy agreement and civil or criminal penalties;</div>
+          <div class="pad-top-row">- The Social Security numbers sought herein are for use in verifying income information on the form, pursuant to Section 60 of the Private Housing Finance Law. Pursuant to the Privacy Act of 1974, disclosure of Social Security number is voluntary. However, failure to supply social security numbers will result in automatic audit of income;</div>
+          <div class="pad-top-row">- Income information shown on this affidavit is subject to verification by the New York State Department of Taxation and Finance in accordance with the provisions of Section 171-b of the Tax Law and, further, to verification by the Department of Housing Preservation and Development;</div>
+          <div class="pad-top-row">- (S)he may be required to submit such documentation to The Department of Housing Preservation and Development or to the Housing Company as deemed necessary to assist in the verification process, including, but not limited to, certified copies of New York State Income Tax Returns; and</div>
+          <div class="pad-top-row">- All adult household members must supply income information.</div>
+        </div>
+      </div>
+
+      <p>Signature:</p>
+      <div class="sig-pad">
+        <ngx-signaturepad #signaturePad [width]="sigWidth" [height]="sigHeight"
+        ></ngx-signaturepad>
+      </div>
+
+      <div class="pad-top-row">
+        <button class="back" mat-stroked-button matStepperPrevious type="button">Back</button>
+        <button class="forward" mat-stroked-button matStepperNext type="button">Submit</button>
+      </div>
+   </mat-step>
   </mat-horizontal-stepper>
 </div>

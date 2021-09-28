@@ -6,9 +6,12 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatOptionModule, MatRadioModule, MatSelectModule,
-  MatStepperModule
+  MatStepperModule,
+  MatNativeDateModule,
+  MatDatepickerModule,
 } from '@angular/material';
 import { RouterModule} from '@angular/router';
+import { NgxSignaturepadModule } from 'ngx-signaturepad2';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +45,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatDividerModule,
     AppRoutingModule,
     MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxSignaturepadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
