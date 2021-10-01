@@ -1,7 +1,6 @@
 <script src="phone-input.component.ts"></script>
 <div role="group" class="phone-input-container"
      [formGroup]="parts"
-     [attr.aria-labelledby]="_formField?.getLabelId()"
      (focusin)="onFocusIn($event)"
      (focusout)="onFocusOut($event)">
   <input class="phone-input-element"
