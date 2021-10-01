@@ -136,8 +136,8 @@ export class TelInput
   stateChanges = new Subject<void>();
   focused = false;
   touched = false;
-  controlType = 'example-tel-input';
-  id = `example-tel-input-${TelInput.nextId++}`;
+  controlType = 'phone-input';
+  id = `phone-input-${TelInput.nextId++}`;
 
   @Input('aria-describedby') userAriaDescribedBy: string;
   private _placeholder: string;
@@ -181,7 +181,7 @@ export class TelInput
 
   setDescribedByIds(ids: string[]) {
     const controlElement = this._elementRef.nativeElement
-      .querySelector('.example-tel-input-container')!;
+      .querySelector('.phone-input-container')!;
     controlElement.setAttribute('aria-describedby', ids.join(' '));
   }
 

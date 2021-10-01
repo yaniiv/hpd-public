@@ -18,10 +18,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormComponent} from './form/form.component';
+import {FormsListComponent} from './forms-list/forms-list.component';
 import {LandingComponent} from './landing/landing.component';
-import {TelInput} from "./library/phone/phone-input.component"
-import {SSNInput} from "./library/ssn/ssn-input.component"
-
+import {TelInput} from './library/phone/phone-input.component'
+import {SSNInput} from './library/ssn/ssn-input.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import {SSNInput} from "./library/ssn/ssn-input.component"
     FormComponent,
     LandingComponent,
     TelInput,
-    SSNInput
+    SSNInput,
+    FormsListComponent,
   ],
   imports: [
     BrowserModule,

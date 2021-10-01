@@ -9,10 +9,7 @@ const NYC_AUTH_HANDOFF_URL = 'https://www1.nyc.gov/';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent {
-  constructor() {
-  }
-
-  public routeToSignIn() {
-    window.location.href = `/affidavit`;
+  public routeToFormsList() {
+    window.location.href = `/forms`;
   }
 }

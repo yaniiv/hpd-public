@@ -26,7 +26,6 @@ export class FormComponent implements OnInit {
     'No return filed'
   ];
 
-  // get householdControls() { return this.householdInfoForm.controls; }
   get householdMembers() { return this.householdInfoForm.controls.members as FormArray; }
 
   constructor(private _formBuilder: FormBuilder) {}
@@ -46,11 +45,11 @@ export class FormComponent implements OnInit {
       hasMultipleHouseMembers:  [false, Validators.required],
       members: new FormArray([
         this._formBuilder.group({
-          firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
-          dateOfBirth: ['', Validators.required],
-          relation: ['', Validators.required],
-          income: ['' ],
+          firstName: [''],
+          lastName: [''],
+          dateOfBirth: [''],
+          relation: [''],
+          income: [''],
           taxReturnType: ['']
         })
       ]),
@@ -97,8 +96,12 @@ export class FormComponent implements OnInit {
     });
 
     this.calculationsForm.valueChanges.subscribe(val => {
-      console.warn("incomeTaxForm val", val);
+      console.warn("calculationsForm val", val);
     });
+  }
+
+  public routeToFormsList() {
+    window.location.href = `/forms`;
   }
 
   onToggleMultipleMembers(changes) {

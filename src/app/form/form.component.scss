@@ -13,9 +13,12 @@
   padding-bottom: 40px;
 }
 
-
 .pad-top-row {
   padding-top: 20px;
+}
+
+.pad-top-row-two {
+  padding-top: 40px;
 }
 
 .add-person-button {
@@ -49,7 +52,6 @@ h1 {
   background-color: #FA9441;
   color: white
 }
-
 
 ::ng-deep
 .mat-horizontal-stepper-header-container{

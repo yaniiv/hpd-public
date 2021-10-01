@@ -1,0 +1,43 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.page-container {
+  text-align: left;
+  padding: 40px 10px;
+}
+
+.head {
+  margin-bottom: 10px;
+}
+
+.list {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  min-height: 150px;
+}
+
+.list-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-raised-button {
+  margin-top: 20px;
+  background-color: #005EA2;
+  color: white;
+}
+
+
+@media screen and (min-width: 768px) {
+  .page-container {
+    padding: 40px 100px;
+  }
+
+  .list {
+    min-height: 300px;
+  }
+}

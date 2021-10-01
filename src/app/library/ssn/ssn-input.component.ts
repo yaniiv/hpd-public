@@ -34,7 +34,7 @@ export class MySSN {
   styleUrls: ['ssn-input.component.scss'],
   providers: [{ provide: MatFormFieldControl, useExisting: SSNInput }],
   host: {
-    '[class.example-floating]': 'shouldLabelFloat',
+    '[class.ssn-floating]': 'shouldLabelFloat',
     '[id]': 'id',
   }
 })
@@ -136,8 +136,8 @@ export class SSNInput
   stateChanges = new Subject<void>();
   focused = false;
   touched = false;
-  controlType = 'example-tel-input';
-  id = `example-tel-input-${SSNInput.nextId++}`;
+  controlType = 'ssn-input';
+  id = `ssn-input-${SSNInput.nextId++}`;
 
   @Input('aria-describedby') userAriaDescribedBy: string;
   private _placeholder: string;

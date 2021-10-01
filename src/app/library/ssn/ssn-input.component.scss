@@ -1,8 +1,8 @@
-.example-tel-input-container {
+.ssn-input-container {
   display: flex;
 }
 
-.example-tel-input-element {
+.ssn-input-element {
   border: none;
   background: none;
   padding: 0;
@@ -11,11 +11,11 @@
   text-align: center;
 }
 
-.example-tel-input-spacer {
+.ssn-input-spacer {
   opacity: 0;
   transition: opacity 200ms;
 }
 
-:host.example-floating .example-tel-input-spacer {
+:host.ssn-floating .ssn-input-spacer {
   opacity: 1;
 }
