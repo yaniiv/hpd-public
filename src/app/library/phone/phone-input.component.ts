@@ -17,7 +17,7 @@ import {
   NgControl,
   Validators
 } from '@angular/forms';
-import {  MatFormFieldControl} from '@angular/material/form-field';
+import {MatFormFieldControl} from '@angular/material/form-field';
 import {Subject} from 'rxjs';
 
 export class MyTel {
@@ -148,7 +148,7 @@ export class TelInput
 
   ngOnDestroy() {
     this.stateChanges.complete();
-    this._focusMonitor.stopMonitoring(this._elementRef);
+    this._focusMonitor.stopMonitoring(this._elementRef as any);
   }
 
   onFocusIn(event: FocusEvent) {

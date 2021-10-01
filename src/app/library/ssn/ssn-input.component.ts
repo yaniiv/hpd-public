@@ -148,7 +148,7 @@ export class SSNInput
 
   ngOnDestroy() {
     this.stateChanges.complete();
-    this._focusMonitor.stopMonitoring(this._elementRef);
+    this._focusMonitor.stopMonitoring(this._elementRef as any);
   }
 
   onFocusIn(event: FocusEvent) {
