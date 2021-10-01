@@ -100,10 +100,6 @@ export class FormComponent implements OnInit {
     });
   }
 
-  public routeToFormsList() {
-    window.location.href = `/forms`;
-  }
-
   onToggleMultipleMembers(changes) {
     if (changes.value === true) {
       this.householdInfoForm.patchValue({

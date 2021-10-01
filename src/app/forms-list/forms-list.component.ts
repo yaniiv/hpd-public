@@ -6,7 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./forms-list.component.scss']
 })
 export class FormsListComponent {
-  public routeToAffidavit() {
-    window.location.href = `/affidavit`;
-  }
 }

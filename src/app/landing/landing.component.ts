@@ -8,8 +8,4 @@ const NYC_AUTH_HANDOFF_URL = 'https://www1.nyc.gov/';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent {
-  public routeToFormsList() {
-    window.location.href = `/forms`;
-  }
-}
+export class LandingComponent {}
