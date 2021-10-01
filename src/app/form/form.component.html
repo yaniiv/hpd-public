@@ -1,4 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<script src="../library/phone/phone-input.component.ts"></script>
 <div class="page-container">
   <mat-horizontal-stepper [linear]="true" >
     <mat-step [stepControl]="personalInfoFormGroup">
@@ -60,7 +61,9 @@
         <div class="pad-bottom-row pad-top-row">
           <p>What is your social security number?</p>
           <mat-form-field appearance="fill" floatLabel="always">
-            <input matInput placeholder="_ _ _ - _ _ - _ _ _ _" formControlName="ssn" required>
+            <mat-label>SSN</mat-label>
+            <ssn-input formControlName="ssn" required></ssn-input>
+            <mat-hint>e.g., 123-45-6789</mat-hint>
           </mat-form-field>
         </div>
 

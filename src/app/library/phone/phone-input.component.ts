@@ -3,7 +3,6 @@ import { coerceBooleanProperty} from '@angular/cdk/coercion';
 import {
   Component,
   ElementRef,
-  Inject,
   Input,
   OnDestroy,
   Optional,
@@ -14,26 +13,13 @@ import {
   AbstractControl,
   ControlValueAccessor,
   FormBuilder,
-  FormControl,
   FormGroup,
   NgControl,
   Validators
 } from '@angular/forms';
-import { MatFormField, MatFormFieldControl} from '@angular/material/form-field';
+import {  MatFormFieldControl} from '@angular/material/form-field';
 import {Subject} from 'rxjs';
 
-/** @title Form field with custom telephone number input control. */
-// @Component({
-//   selector: 'form-field-custom-control-example',
-//   templateUrl: 'form-field-custom-control-example.html',
-// })
-// export class FormFieldCustomControlExample {
-//   form: FormGroup = new FormGroup({
-//     tel: new FormControl(new MyTel('', '', ''))
-//   });
-// }
-
-/** Data structure for holding telephone number. */
 export class MyTel {
   constructor(
     public area: string,
@@ -42,18 +28,17 @@ export class MyTel {
   ) {}
 }
 
-/** Custom `MatFormFieldControl` for telephone number input. */
 @Component({
   selector: 'phone-input',
   templateUrl: 'phone-input.component.html',
   styleUrls: ['phone-input.component.scss'],
-  providers: [{ provide: MatFormFieldControl, useExisting: MyTelInput }],
+  providers: [{ provide: MatFormFieldControl, useExisting: TelInput }],
   host: {
     '[class.example-floating]': 'shouldLabelFloat',
     '[id]': 'id',
   }
 })
-export class MyTelInput
+export class TelInput
   implements ControlValueAccessor, MatFormFieldControl<MyTel>, OnDestroy {
 
   get empty() {
@@ -120,7 +105,6 @@ export class MyTelInput
     formBuilder: FormBuilder,
     private _focusMonitor: FocusMonitor,
     private _elementRef: ElementRef<HTMLElement>,
-    // @Optional() @Inject(MAT_FORM_FIELD) public _formField: MatFormField,
     @Optional() @Self() public ngControl: NgControl) {
 
     this.parts = formBuilder.group({
@@ -144,8 +128,6 @@ export class MyTelInput
   }
   static nextId = 0;
 
-  // static ngAcceptInputType_disabled: BooleanInput;
-  // static ngAcceptInputType_required: BooleanInput;
   @ViewChild('area') areaInput: HTMLInputElement;
   @ViewChild('exchange') exchangeInput: HTMLInputElement;
   @ViewChild('subscriber') subscriberInput: HTMLInputElement;
@@ -155,7 +137,7 @@ export class MyTelInput
   focused = false;
   touched = false;
   controlType = 'example-tel-input';
-  id = `example-tel-input-${MyTelInput.nextId++}`;
+  id = `example-tel-input-${TelInput.nextId++}`;
 
   @Input('aria-describedby') userAriaDescribedBy: string;
   private _placeholder: string;

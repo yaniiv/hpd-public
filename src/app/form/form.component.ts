@@ -16,10 +16,13 @@ export class FormComponent implements OnInit {
   sigWidth = 600;
   sigHeight = 100;
 
+  ssnRegex = '[A-Za-z]{3}';
+
+
   taxReturnTypes = [
-    "Joint return",
-    "Individual return",
-    "No return filed"
+    'Joint return',
+    'Individual return',
+    'No return filed'
   ]
 
   // get householdControls() { return this.houseMemberInfoFormGroup.controls; }

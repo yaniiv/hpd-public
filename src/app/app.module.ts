@@ -19,7 +19,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormComponent} from './form/form.component';
 import {LandingComponent} from './landing/landing.component';
-import {MyTelInput} from "./library/phone-input.component"
+import {TelInput} from "./library/phone/phone-input.component"
+import {SSNInput} from "./library/ssn/ssn-input.component"
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MyTelInput} from "./library/phone-input.component"
     AppComponent,
     FormComponent,
     LandingComponent,
-    MyTelInput,
+    TelInput,
+    SSNInput
   ],
   imports: [
     BrowserModule,
