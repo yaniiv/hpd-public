@@ -13,6 +13,6 @@ export class LandingComponent {
   }
 
   public routeToSignIn() {
-    window.location.href = NYC_AUTH_HANDOFF_URL;
+    window.location.href = `/affidavit`;
   }
 }

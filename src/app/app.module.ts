@@ -12,20 +12,22 @@ import {
 } from '@angular/material';
 import { RouterModule} from '@angular/router';
 import { NgxSignaturepadModule } from 'ngx-signaturepad2';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormComponent} from './form/form.component';
 import {LandingComponent} from './landing/landing.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MyTelInput} from "./library/phone-input.component"
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    LandingComponent
+    LandingComponent,
+    MyTelInput,
   ],
   imports: [
     BrowserModule,
